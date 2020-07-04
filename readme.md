@@ -27,7 +27,8 @@ setx MONGODB_URI {Heroku Add-on mLab's URI}
 > use gitignore.io for Node.js ([link](https://www.toptal.com/developers/gitignore/api/node))
 ### npm script
 ```
-  "scripts": {
-    "dev": "nodemon ./project/app.js"
-  },
+	"scripts": {
+		"dev": "nodemon ./project/app.js",
+		"start": "node ./project/app.js"
+	},
 ```
