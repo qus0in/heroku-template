@@ -1,7 +1,8 @@
 # Heroku Express Rest API (w MongoDB) 
 ## How to Use This
 ### Test
-* Terminal : `npm run test`
+* Terminal : `npm run dev`
+  * URL : http://localhost:5000/ or http://http://127.0.0.1:5000/
 * Use [Postman](https://www.postman.com/) to test API
   * [Test Cases](https://www.getpostman.com/collections/a382be0b1860a3cc52ef)
 ## How to Build This
