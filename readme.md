@@ -14,6 +14,8 @@ npm init -y
 npm i express
 : install mongoose
 npm i mongoose
+: install mongoose-auto-increment
+npm i mongoose-auto-increment
 : install cors
 npm i cors
 : install nodemon (dev tool)

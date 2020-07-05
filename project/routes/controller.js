@@ -55,8 +55,20 @@ router.get('/data', async (req, res, next) => {
     }
 })
 
+// Read Data By Id
+router.get('/data/:id', async (req, res, next) => {
+    try {
+        res.send(await Data.findById(req.params.id));
+        const msg = "successfully searched" 
+        console.log(msg);
+    } catch (e) {
+        console.log("an error occurred!");
+        next(e);
+    }
+})
+
 // Read Data By Name
-router.get('/data/:name', async (req, res, next) => {
+router.get('/data_name/:name', async (req, res, next) => {
     try {
         // https://mongoosejs.com/docs/api.html#model_Model.find
         res.send(await Data.findOne({name: req.params.name}));
@@ -68,8 +80,21 @@ router.get('/data/:name', async (req, res, next) => {
     }
 })
 
+// Update Data By Id 
+router.put('/data/:id', async (req, res, next) => {
+    try {
+        await Data.findByIdAndUpdate(req.params.id, req.body);
+        const msg = "successfully changed" 
+        res.send(msg);
+        console.log(msg);
+    } catch (e) {
+        console.log("an error occurred!");
+        next(e);
+    }
+})
+
 // Update Data By Name 
-router.put('/data/:name', async (req, res, next) => {
+router.put('/data_name/:name', async (req, res, next) => {
     try {
         await Data.findOneAndUpdate({name: req.params.name}, req.body);
         const msg = "successfully changed" 
@@ -81,8 +106,21 @@ router.put('/data/:name', async (req, res, next) => {
     }
 })
 
+// Delete Data By Id 
+router.delete('/data/:id', async (req, res, next) => {
+    try {
+        await Data.findByIdAndRemove(req.params.id, req.body);
+        const msg = "successfully deleted" 
+        res.send(msg);
+        console.log(msg);
+    } catch (e) {
+        console.log("an error occurred!");
+        next(e);
+    }
+})
+
 // Delete Data By Name 
-router.delete('/data/:name', async (req, res, next) => {
+router.delete('/data_name/:name', async (req, res, next) => {
     try {
         await Data.findOneAndRemove({name: req.params.name}, req.body);
         const msg = "successfully deleted" 
