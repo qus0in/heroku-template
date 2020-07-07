@@ -14,21 +14,7 @@ router.use((req, res, next) => {
 // CORS
 // Front와 나눠서 개발하는 경우 CORS 문제 발생
 // https://expressjs.com/en/resources/middleware/cors.html
-const whitelist = ['http://localhost:8080']; // 이후에 API 호출하는 Front의 URL 추가
-const corsOptions = {
-    origin: function (origin, callback) {
-        console.log(`origin : ${origin}`);
-        // origin 자체가 의미가 없거나 (자체 호출) whitelist에 호출한 origin 주소가 존재하면
-        if (origin === undefined || whitelist.indexOf(origin) !== -1) {
-            callback(null, true) // 참 값으로 판정하여 데이터 전달해줌
-        } else {
-            callback(new Error('Not allowed by CORS')) // CORS Error 리턴
-        }
-    }, credentials: true
-};
-
-// Pre-Flight Setting
-router.options('*', cors(corsOptions));
+router.use(cors())
 
 // Create Data
 router.post('/data', async (req, res, next) => {
@@ -55,10 +41,23 @@ router.get('/data', async (req, res, next) => {
     }
 })
 
-// Read Data By Id
+// Read Data By Id (Symantic)
 router.get('/data/:id', async (req, res, next) => {
     try {
         res.send(await Data.findById(req.params.id));
+        const msg = "successfully searched" 
+        console.log(msg);
+    } catch (e) {
+        console.log("an error occurred!");
+        next(e);
+    }
+})
+
+// Read Data By Id (Query String)
+router.get('/data_query', async (req, res, next) => {
+    try {
+        // .../data_query?id={num}
+        res.send(await Data.findById(req.query.id));
         const msg = "successfully searched" 
         console.log(msg);
     } catch (e) {
