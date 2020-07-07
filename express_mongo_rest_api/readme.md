@@ -1,5 +1,11 @@
 # Heroku Express Rest API (w MongoDB) 
 ## How to Use This
+### Install
+* Terminal
+```
+npm i
+setx MONGODB_URI {Heroku Add-on mLab's URI}
+```
 ### Test
 * Terminal : `npm run dev`
   * URL : http://localhost:5000/ or http://http://127.0.0.1:5000/
