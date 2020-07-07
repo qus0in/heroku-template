@@ -6,4 +6,3 @@
 * Framework : ExpressJS
 * DB : MongoDB (mLab, Heroku Add-on)
   * ORM/ODM : Mongoose
-* [Download](https://github.com/qus0in/heroku_kit/archive/express_mongo_rest_api.zip)
